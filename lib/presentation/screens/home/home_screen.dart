@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sharpist/ui/screens/task1/task1_screen.dart';
-import 'package:sharpist/ui/widgets/text_widget.dart';
+import 'package:sharpist/presentation/screens/task1/task1_screen.dart';
+import 'package:sharpist/presentation/widgets/text_widget.dart';
 
+import '../../../color/app_color.dart';
 import '../task2/task2_screen.dart';
 import '../task3/task3_screen.dart';
 import '../task4/task4_screen.dart';
@@ -17,10 +18,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.gray50,
       appBar: AppBar(
+        backgroundColor: AppColor.white,
+        surfaceTintColor: Colors.transparent,
         title: const TextWidget(
-          text: 'Home',
-          fontSize: 18,
+          text: "Home",
+          fontSize: 24,
         ),
       ),
       body: ListView(

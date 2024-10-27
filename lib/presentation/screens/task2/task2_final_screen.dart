@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sharpist/ui/widgets/button_widget.dart';
+import 'package:sharpist/presentation/widgets/button_widget.dart';
 
 import '../../../color/app_color.dart';
 import '../../../utils/utils.dart';
@@ -66,8 +66,8 @@ class _Task2FinalScreenState extends State<Task2FinalScreen> {
                   color: AppColor.white,
                 ),
               ),
-              color: Colors.blue,
-              onTap: () {
+              color: AppColor.primary,
+              onPressed: () {
                 Navigator.popUntil(context, (route) => route.isFirst);
               },
             ),

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sharpist/data/response/task2_response.dart';
 import 'package:sharpist/provider/api_provider.dart';
-import 'package:sharpist/ui/screens/task2/task2_final_screen.dart';
-import 'package:sharpist/ui/widgets/button_widget.dart';
+import 'package:sharpist/presentation/screens/task2/task2_final_screen.dart';
+import 'package:sharpist/presentation/widgets/button_widget.dart';
 
 import '../../../color/app_color.dart';
 import '../../widgets/text_widget.dart';
@@ -77,8 +77,8 @@ class _Task2WriteScreenState extends State<Task2WriteScreen> {
                         color: AppColor.white,
                       ),
               ),
-              color: Colors.blue,
-              onTap: () {
+              color: AppColor.primary,
+              onPressed: () {
                 if (loading) {
                   return;
                 }

@@ -18,7 +18,7 @@ class TextWidget extends StatelessWidget {
     required this.text,
     this.margin = EdgeInsets.zero,
     this.fontSize = 14,
-    this.fontWeight = FontWeight.w600,
+    this.fontWeight = FontWeight.w400,
     this.height = 0,
     this.color = AppColor.gray600,
     this.maxLines,
@@ -32,7 +32,7 @@ class TextWidget extends StatelessWidget {
       margin: margin,
       child: Text(
         text,
-        style: GoogleFonts.montserrat(
+        style: GoogleFonts.outfit(
           fontWeight: fontWeight,
           color: color,
           height: height,

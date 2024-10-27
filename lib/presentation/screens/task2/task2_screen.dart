@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sharpist/ui/screens/task2/task2_write_screen.dart';
-import 'package:sharpist/ui/widgets/button_widget.dart';
+import 'package:sharpist/presentation/screens/task2/task2_write_screen.dart';
+import 'package:sharpist/presentation/widgets/button_widget.dart';
 
 import '../../../color/app_color.dart';
 import '../../../utils/utils.dart';
@@ -94,7 +94,7 @@ class _Task2ScreenState extends State<Task2Screen> {
                       text: _text.substring(_currentWordStart!, _currentWordEnd),
                       style: GoogleFonts.montserrat(
                         color: AppColor.white,
-                        backgroundColor: Colors.blue,
+                        backgroundColor: AppColor.primary,
                         height: 1.5,
                       ),
                     ),
@@ -129,8 +129,8 @@ class _Task2ScreenState extends State<Task2Screen> {
                           color: AppColor.white,
                         ),
                       ),
-                      color: Colors.blue,
-                      onTap: () {
+                      color: AppColor.primary,
+                      onPressed: () {
                         if (_right == 32) return;
 
                         _right = 32;
@@ -171,7 +171,7 @@ class _Task2ScreenState extends State<Task2Screen> {
                               .animate()
                               .fade()
                               .slide()
-                              .tint(color: Colors.blue)
+                              .tint(color: AppColor.primary)
                           : const TextWidget(
                               text: '0',
                               fontSize: 28,
@@ -191,12 +191,13 @@ class _Task2ScreenState extends State<Task2Screen> {
             ButtonWidget(
               widget: const Center(
                 child: TextWidget(
-                  text: 'next >>',
+                  text: 'Next',
+                  fontSize: 18,
                 ),
               ),
-              color: Colors.transparent,
+              color: AppColor.gray200,
               height: 56,
-              onTap: () {
+              onPressed: () {
                 _flutterTTS.stop();
 
                 Navigator.push(

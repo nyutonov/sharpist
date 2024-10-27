@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 import 'package:sharpist/color/app_color.dart';
 import 'package:sharpist/data/response/task4_response.dart';
-import 'package:sharpist/ui/widgets/button_widget.dart';
-import 'package:sharpist/ui/widgets/text_widget.dart';
+import 'package:sharpist/presentation/widgets/button_widget.dart';
+import 'package:sharpist/presentation/widgets/text_widget.dart';
 import 'package:image/image.dart' as IMG;
 
 import '../../../utils/painter.dart';
@@ -21,8 +21,8 @@ class Task4Screen extends StatefulWidget {
 
 class _Task4ScreenState extends State<Task4Screen> {
   List<DrawingPoint?> drawingPoints = [];
-  List<Color> colors = [Colors.blue, Colors.red, Colors.green, Colors.yellow, Colors.orange, Colors.purple, Colors.black];
-  Color selectedColor = Colors.blue;
+  List<Color> colors = [AppColor.primary, Colors.blue, Colors.green, Colors.yellow, Colors.orange, Colors.purple, Colors.black];
+  Color selectedColor = AppColor.primary;
   Uint8List? _imageFile;
   ScreenshotController screenshotsController = ScreenshotController();
   bool loading = false;
@@ -89,8 +89,7 @@ class _Task4ScreenState extends State<Task4Screen> {
               itemBuilder: (context, index) {
                 return Row(
                   children: [
-                    if (index == 0)
-                      const SizedBox(width: 16),
+                    if (index == 0) const SizedBox(width: 16),
                     InkWell(
                       onTap: () {
                         selectedColor = colors[index];
@@ -98,20 +97,16 @@ class _Task4ScreenState extends State<Task4Screen> {
                         setState(() {});
                       },
                       splashColor: Colors.white,
-                      child: Ink(
-                        width: 48,
-                        height: 48,
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 300),
+                        width: (selectedColor == colors[index]) ? 32 : 48,
+                        height: (selectedColor == colors[index]) ? 32 : 48,
                         decoration: BoxDecoration(
                           color: colors[index],
-                          border: Border.all(
-                            color: (selectedColor == colors[index]) ? Colors.white : Colors.transparent,
-                            width: 8,
-                          ),
                         ),
                       ),
                     ),
-                    if (index == colors.length - 1)
-                      const SizedBox(width: 16),
+                    if (index == colors.length - 1) const SizedBox(width: 16),
                   ],
                 );
               },
@@ -156,6 +151,10 @@ class _Task4ScreenState extends State<Task4Screen> {
                     setState(() {});
                   },
                   onPanUpdate: (details) {
+                    if (details.localPosition.dy > size || details.localPosition.dy < 0) {
+                      return;
+                    }
+
                     drawingPoints.add(
                       DrawingPoint(
                         details.localPosition,
@@ -197,11 +196,9 @@ class _Task4ScreenState extends State<Task4Screen> {
                       fontSize: 18,
                     ),
             ),
-            margin: const EdgeInsets.symmetric(
-                horizontal: 16
-            ),
-            color: Colors.blue,
-            onTap: () async {
+            margin: const EdgeInsets.symmetric(horizontal: 16),
+            color: AppColor.primary,
+            onPressed: () async {
               if (loading) {
                 return;
               }
@@ -278,8 +275,8 @@ class _Task4ScreenState extends State<Task4Screen> {
                             color: AppColor.white,
                           ),
                         ),
-                        color: Colors.blue,
-                        onTap: () {
+                        color: AppColor.primary,
+                        onPressed: () {
                           Navigator.pop(context);
                         },
                         height: 56,

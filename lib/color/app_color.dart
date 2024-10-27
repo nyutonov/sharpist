@@ -14,6 +14,9 @@ class AppColor {
   static const Color gray800 = Color(0xFF1F2937);
   static const Color gray900 = Color(0xFF111827);
 
+  static const Color primary = Color(0xFFF67280);
+  static const Color secondary = Color(0xFF355C7D);
+
   ///shimmer
   static const Color shimmerBase = Color(0xFFE5E5E5);
   static const Color shimmerHighlight = Color(0xFFFCF9F9);
